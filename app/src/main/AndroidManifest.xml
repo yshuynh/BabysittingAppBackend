@@ -12,7 +12,7 @@
         <activity
             android:name=".ParentActivity"
             android:label="@string/title_activity_parent"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
