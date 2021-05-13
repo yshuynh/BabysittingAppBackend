@@ -9,10 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BabysittingApp">
-        <activity
-            android:name=".ParentActivity"
-            android:label="@string/title_activity_parent"></activity>
-        <activity android:name=".MainActivity" android:windowSoftInputMode="adjustResize">
+<!--        <activity-->
+<!--            android:name=".ParentActivity"-->
+<!--            android:label="@string/title_activity_parent"></activity>-->
+        <activity android:name=".ParentActivity" android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
