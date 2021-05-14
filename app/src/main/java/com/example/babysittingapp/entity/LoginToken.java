@@ -1,4 +1,5 @@
 package com.example.babysittingapp.entity;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -13,6 +14,9 @@ public class LoginToken {
     @SerializedName("access_token")
     @Expose
     private String accessToken;
+    @SerializedName("user_id")
+    @Expose
+    private String userId;
     @SerializedName("username")
     @Expose
     private String username;
@@ -44,6 +48,14 @@ public class LoginToken {
         this.accessToken = accessToken;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -59,5 +71,6 @@ public class LoginToken {
     public void setRole(String role) {
         this.role = role;
     }
+
 
 }

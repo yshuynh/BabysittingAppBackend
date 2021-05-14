@@ -20,6 +20,8 @@ import com.example.babysittingapp.entity.LoginToken;
 import com.example.babysittingapp.entity.Post;
 import com.example.babysittingapp.service.APIService;
 import com.example.babysittingapp.service.APIUtils;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
@@ -48,7 +50,22 @@ public class HomeFragment extends Fragment {
             }
         });
         createRecycleView();
+        createFloatingButton();
         return root;
+    }
+
+    private void createFloatingButton() {
+        FloatingActionButton fab = binding.floatingActionButton;
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CreateParentFragment nextFrag= new CreateParentFragment();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.frame_container, nextFrag, "findThisFragment")
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
     }
 
     private void createRecycleView() {
