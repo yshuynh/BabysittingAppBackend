@@ -67,6 +67,24 @@
                 app:layout_constraintStart_toEndOf="@+id/textView2"
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
 
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="25dp"
+                app:cardPreventCornerOverlap="false"
+                app:layout_constraintStart_toStartOf="@+id/ParentID"
+                app:layout_constraintTop_toBottomOf="@+id/ParentID">
+
+                <ImageView
+                    android:scaleType="centerCrop"
+                    android:id="@+id/item_avatar_parent"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/img"
+                    tools:srcCompat="@tools:sample/avatars" />
+            </android.support.v7.widget.CardView>
+
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
@@ -93,19 +111,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="ID phụ huynh:"
+                android:text="Thông tin phụ huynh:"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/textView2"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-            <TextView
-                android:id="@+id/parentID"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tên phụ huynh:"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/textView"
-                app:layout_constraintTop_toBottomOf="@+id/ParentID" />
 
             <TextView
                 android:id="@+id/parentID2"
@@ -113,21 +122,21 @@
                 android:layout_height="wrap_content"
                 android:text="Thông tin người giữ trẻ:"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/cardView2"
-                app:layout_constraintStart_toStartOf="@+id/textView5" />
+                app:layout_constraintStart_toStartOf="@+id/textView5"
+                app:layout_constraintTop_toTopOf="@+id/ParentID" />
 
             <android.support.v7.widget.CardView
                 android:id="@+id/cardView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
                 app:cardCornerRadius="25dp"
                 app:cardPreventCornerOverlap="false"
                 app:layout_constraintStart_toStartOf="@+id/textView4"
-                app:layout_constraintTop_toBottomOf="@+id/textView4">
+                app:layout_constraintTop_toBottomOf="@+id/parentID2">
 
                 <ImageView
-                    android:id="@+id/item_avatar"
+                    android:scaleType="centerCrop"
+                    android:id="@+id/ud_avatar"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:background="@drawable/img"
@@ -172,20 +181,12 @@
                 app:layout_constraintTop_toTopOf="@+id/textView18" />
 
             <TextView
-                android:id="@+id/pi_idparent"
+                android:id="@+id/pd_parentName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"
-                app:layout_constraintStart_toEndOf="@+id/ParentID"
-                app:layout_constraintTop_toTopOf="@+id/ParentID" />
-
-            <TextView
-                android:id="@+id/pi_nameParent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                app:layout_constraintStart_toStartOf="@+id/parentID"
-                app:layout_constraintTop_toBottomOf="@+id/parentID" />
+                app:layout_constraintStart_toEndOf="@+id/cardView3"
+                app:layout_constraintTop_toBottomOf="@+id/ParentID" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

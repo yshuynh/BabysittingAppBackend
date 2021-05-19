@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.babysittingapp.entity.Babysister;
 import com.example.babysittingapp.entity.LoginToken;
 import com.example.babysittingapp.entity.Post;
+import com.example.babysittingapp.entity.User;
 import com.example.babysittingapp.ui.home.PostAdapter;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class StaticData extends Observable {
     public LoginToken loginToken = null;
     private ArrayList<Post> post_list;
     private String currentPostID = "";
+    public User currentUser = null;
 
     public ArrayList<Post> getPost_list() {
         return post_list;

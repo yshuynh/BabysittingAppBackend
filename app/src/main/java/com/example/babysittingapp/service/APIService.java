@@ -38,6 +38,10 @@ public interface APIService {
     Call<ResponseBody> putPost(@Body PostCreatePost post);
 
     @Multipart
+    @PUT("post/{post_id}/request")
+    Call<ResponseBody> babyRequestPost(@Path("post_id") String post_id, @Part("babysister_request") RequestBody babysisterID);
+
+    @Multipart
     @PUT("post/{post_id}")
     Call<ResponseBody> updatePost(@Path("post_id") String post_id, @Part("babysister") RequestBody babysiterID);
 }

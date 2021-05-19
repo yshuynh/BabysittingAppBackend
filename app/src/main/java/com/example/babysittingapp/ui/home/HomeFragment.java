@@ -95,5 +95,6 @@ public class HomeFragment extends Fragment implements java.util.Observer {
     public void update(Observable o, Object arg) {
         Log.d("abc","update observer home");
         createRecycleView();
+
     }
 }

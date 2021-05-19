@@ -8,15 +8,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.babysittingapp.ParentActivity;
 import com.example.babysittingapp.R;
-import com.example.babysittingapp.entity.Babysister;
 import com.example.babysittingapp.entity.Post;
+import com.example.babysittingapp.entity.User;
 import com.example.babysittingapp.service.APIService;
 import com.example.babysittingapp.service.APIUtils;
 import com.example.babysittingapp.service.CustomUtils;
@@ -33,15 +32,14 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.FormUrlEncoded;
 
 public class BabysisterAdapter extends RecyclerView.Adapter<BabysisterAdapter.ViewHolder> {
     //Dữ liệu hiện thị là danh sách sinh viên
-    private ArrayList<Babysister> babyList;
+    private ArrayList<User> babyList;
     // Lưu Context để dễ dàng truy cập
     private Context mContext;
 
-    public BabysisterAdapter(ArrayList<Babysister> _student, Context mContext) {
+    public BabysisterAdapter(ArrayList<User> _student, Context mContext) {
         this.babyList = _student;
         this.mContext = mContext;
     }
@@ -63,7 +61,7 @@ public class BabysisterAdapter extends RecyclerView.Adapter<BabysisterAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull BabysisterAdapter.ViewHolder holder, int position) {
-        Babysister babyData = babyList.get(position);
+        User babyData = babyList.get(position);
         holder.name.setText(babyData.getName());
         Integer year = Calendar.getInstance().get(Calendar.YEAR);
         Integer birthYear = Integer.parseInt(babyData.getDateOfBird().split("-")[0]);
@@ -104,17 +102,20 @@ public class BabysisterAdapter extends RecyclerView.Adapter<BabysisterAdapter.Vi
             gender = itemview.findViewById(R.id.bb_gender);
             job = itemview.findViewById(R.id.bb_job);
             rating = itemview.findViewById(R.id.bb_rating);
-            avatar = itemview.findViewById(R.id.item_avatar);
+            avatar = itemview.findViewById(R.id.ud_avatar);
             button = itemView.findViewById(R.id.bb_button);
+            if (!StaticData.getInstance().loginToken.getRole().equals("parent")) {
+                button.setVisibility(View.GONE);
+            }
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     // API
                     Post post = StaticData.getInstance().getCurrentPost();
-                    Babysister babysister = babyList.get(getAdapterPosition());
+                    User babysister = babyList.get(getAdapterPosition());
                     APIService service = APIUtils.getAPIService();
-                    Log.d("abc", babysister.getUser().getId());
-                    RequestBody babysisterID = RequestBody.create(MediaType.parse("text/plain"), babysister.getUser().getId());
+                    Log.d("abc", babysister.getId());
+                    RequestBody babysisterID = RequestBody.create(MediaType.parse("text/plain"), babysister.getId());
                     service.updatePost(post.getId(), babysisterID).enqueue(new Callback<ResponseBody>() {
                         @Override
                         public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -129,6 +130,17 @@ public class BabysisterAdapter extends RecyclerView.Adapter<BabysisterAdapter.Vi
                             Log.d("abc", "fail api");
                         }
                     });
+                }
+            });
+            itemview.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    StaticData.getInstance().currentUser = babyList.get(getAdapterPosition());
+                    UserInfoFragment nextFrag= new UserInfoFragment();
+                    ((ParentActivity)mContext).getSupportFragmentManager().beginTransaction()
+                            .add(R.id.fragment_holder, nextFrag, "userInfo")
+                            .addToBackStack(null)
+                            .commit();
                 }
             });
         }

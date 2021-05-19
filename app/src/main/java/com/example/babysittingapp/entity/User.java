@@ -7,6 +7,9 @@ public class User {
     @SerializedName("id")
     @Expose
     private String id;
+    @SerializedName("rating")
+    @Expose
+    private Rating rating;
     @SerializedName("username")
     @Expose
     private String username;
@@ -22,9 +25,30 @@ public class User {
     @SerializedName("created")
     @Expose
     private String created;
-    @SerializedName("last_change_pass")
+    @SerializedName("name")
     @Expose
-    private Object lastChangePass;
+    private String name;
+    @SerializedName("address")
+    @Expose
+    private String address;
+    @SerializedName("phone_number")
+    @Expose
+    private String phoneNumber;
+    @SerializedName("avatar")
+    @Expose
+    private String avatar;
+    @SerializedName("job")
+    @Expose
+    private String job;
+    @SerializedName("date_of_bird")
+    @Expose
+    private String dateOfBird;
+    @SerializedName("email")
+    @Expose
+    private String email;
+    @SerializedName("gender")
+    @Expose
+    private Boolean gender;
 
     public String getId() {
         return id;
@@ -32,6 +56,14 @@ public class User {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public Rating getRating() {
+        return rating;
+    }
+
+    public void setRating(Rating rating) {
+        this.rating = rating;
     }
 
     public String getUsername() {
@@ -74,12 +106,68 @@ public class User {
         this.created = created;
     }
 
-    public Object getLastChangePass() {
-        return lastChangePass;
+    public String getName() {
+        return name;
     }
 
-    public void setLastChangePass(Object lastChangePass) {
-        this.lastChangePass = lastChangePass;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getJob() {
+        return job;
+    }
+
+    public void setJob(String job) {
+        this.job = job;
+    }
+
+    public String getDateOfBird() {
+        return dateOfBird;
+    }
+
+    public void setDateOfBird(String dateOfBird) {
+        this.dateOfBird = dateOfBird;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Boolean getGender() {
+        return gender;
+    }
+
+    public void setGender(Boolean gender) {
+        this.gender = gender;
     }
 
 }

@@ -1,7 +1,6 @@
 package com.example.babysittingapp.entity;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 
 public class Post {
@@ -11,13 +10,13 @@ public class Post {
     private String id;
     @SerializedName("parent")
     @Expose
-    private Parent parent;
+    private User parent;
     @SerializedName("babysister")
     @Expose
-    private Babysister babysister;
+    private User babysister;
     @SerializedName("babysister_request")
     @Expose
-    private List<Babysister> babysisterRequest = null;
+    private List<User> babysisterRequest = null;
     @SerializedName("child_number")
     @Expose
     private Integer childNumber;
@@ -45,27 +44,27 @@ public class Post {
         this.id = id;
     }
 
-    public Parent getParent() {
+    public User getParent() {
         return parent;
     }
 
-    public void setParent(Parent parent) {
+    public void setParent(User parent) {
         this.parent = parent;
     }
 
-    public Babysister getBabysister() {
+    public User getBabysister() {
         return babysister;
     }
 
-    public void setBabysister(Babysister babysister) {
+    public void setBabysister(User babysister) {
         this.babysister = babysister;
     }
 
-    public List<Babysister> getBabysisterRequest() {
+    public List<User> getBabysisterRequest() {
         return babysisterRequest;
     }
 
-    public void setBabysisterRequest(List<Babysister> babysisterRequest) {
+    public void setBabysisterRequest(List<User> babysisterRequest) {
         this.babysisterRequest = babysisterRequest;
     }
 

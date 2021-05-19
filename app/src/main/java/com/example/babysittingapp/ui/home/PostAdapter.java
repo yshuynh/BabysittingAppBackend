@@ -21,7 +21,6 @@ import com.example.babysittingapp.service.StaticData;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     //Dữ liệu hiện thị là danh sách sinh viên
@@ -57,8 +56,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         holder.textStartTime.setText(post.getTimeStart().split("T")[0]);
         holder.textEndTime.setText(post.getTimeEnd().split("T")[0]);
         holder.cntRequest.setText(((Integer)post.getBabysisterRequest().size()).toString());
-        holder.parentID.setText(post.getParent().getUser().getId());
+//        holder.parentID.setText(post.getParent().getId());
         holder.parentName.setText(post.getParent().getName());
+
+        holder.avatarParent.setImageBitmap(null);
+        new CustomUtils.DownloadImageTask(holder.avatarParent)
+                .execute(post.getParent().getAvatar());
 
         holder.avatar.setImageBitmap(null);
         if (post.getBabysister() != null)
@@ -84,6 +87,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         public TextView cntRequest;
         public TextView parentID;
         public TextView parentName;
+        public ImageView avatarParent;
 //        public Button detail_button;
 
         public ViewHolder(View itemView) {
@@ -93,10 +97,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             textPrice = itemView.findViewById(R.id.text_price);
             textStartTime = itemView.findViewById(R.id.textStartTime);
             textEndTime = itemView.findViewById(R.id.textEndTime);
-            avatar = itemView.findViewById(R.id.item_avatar);
+            avatar = itemView.findViewById(R.id.ud_avatar);
             cntRequest = itemView.findViewById(R.id.pd_cntRequest);
-            parentID = itemView.findViewById(R.id.pi_idparent);
-            parentName = itemView.findViewById(R.id.pi_nameParent);
+//            parentID = itemView.findViewById(R.id.pd_parentName);
+            parentName = itemView.findViewById(R.id.pd_parentName);
+            avatarParent = itemView.findViewById(R.id.item_avatar_parent);
             itemview.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
