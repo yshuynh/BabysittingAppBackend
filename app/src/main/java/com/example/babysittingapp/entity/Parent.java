@@ -1,6 +1,8 @@
 package com.example.babysittingapp.entity;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 public class Parent {
 
@@ -16,6 +18,9 @@ public class Parent {
     @SerializedName("address")
     @Expose
     private String address;
+    @SerializedName("phone_number")
+    @Expose
+    private Object phoneNumber;
 
     public User getUser() {
         return user;
@@ -47,6 +52,14 @@ public class Parent {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Object getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(Object phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
 }

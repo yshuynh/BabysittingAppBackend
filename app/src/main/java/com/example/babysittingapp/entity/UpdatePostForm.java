@@ -1,23 +1,14 @@
 package com.example.babysittingapp.entity;
+
+import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
-public class Post {
+public class UpdatePostForm {
 
     @SerializedName("id")
     @Expose
     private String id;
-    @SerializedName("parent")
-    @Expose
-    private Parent parent;
-    @SerializedName("babysister")
-    @Expose
-    private Babysister babysister;
-    @SerializedName("babysister_request")
-    @Expose
-    private List<Babysister> babysisterRequest = null;
     @SerializedName("child_number")
     @Expose
     private Integer childNumber;
@@ -36,6 +27,15 @@ public class Post {
     @SerializedName("status")
     @Expose
     private String status;
+    @SerializedName("parent")
+    @Expose
+    private String parent;
+    @SerializedName("babysister")
+    @Expose
+    private String babysister;
+    @SerializedName("babysister_request")
+    @Expose
+    private List<Object> babysisterRequest = null;
 
     public String getId() {
         return id;
@@ -43,30 +43,6 @@ public class Post {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public Parent getParent() {
-        return parent;
-    }
-
-    public void setParent(Parent parent) {
-        this.parent = parent;
-    }
-
-    public Babysister getBabysister() {
-        return babysister;
-    }
-
-    public void setBabysister(Babysister babysister) {
-        this.babysister = babysister;
-    }
-
-    public List<Babysister> getBabysisterRequest() {
-        return babysisterRequest;
-    }
-
-    public void setBabysisterRequest(List<Babysister> babysisterRequest) {
-        this.babysisterRequest = babysisterRequest;
     }
 
     public Integer getChildNumber() {
@@ -115,6 +91,30 @@ public class Post {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getParent() {
+        return parent;
+    }
+
+    public void setParent(String parent) {
+        this.parent = parent;
+    }
+
+    public String getBabysister() {
+        return babysister;
+    }
+
+    public void setBabysister(String babysister) {
+        this.babysister = babysister;
+    }
+
+    public List<Object> getBabysisterRequest() {
+        return babysisterRequest;
+    }
+
+    public void setBabysisterRequest(List<Object> babysisterRequest) {
+        this.babysisterRequest = babysisterRequest;
     }
 
 }

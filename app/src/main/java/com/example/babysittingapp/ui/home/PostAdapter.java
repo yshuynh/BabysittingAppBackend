@@ -1,16 +1,22 @@
 package com.example.babysittingapp.ui.home;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.babysittingapp.ParentActivity;
 import com.example.babysittingapp.R;
 import com.example.babysittingapp.entity.Post;
+import com.example.babysittingapp.service.CustomUtils;
+import com.example.babysittingapp.service.StaticData;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -36,10 +42,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Nạp layout cho View biểu diễn phần tử sinh viên
-        View studentView =
+        View view =
                 inflater.inflate(R.layout.post_item, parent, false);
-
-        ViewHolder viewHolder = new ViewHolder(studentView);
+        ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
 
     }
@@ -49,8 +54,16 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         Post post = postList.get(position);
         holder.textStatus.setText(post.getStatus());
         holder.textPrice.setText(post.getPrice().toString());
-        holder.textStartTime.setText(post.getTimeStart());
-        holder.textEndTime.setText(post.getTimeEnd());
+        holder.textStartTime.setText(post.getTimeStart().split("T")[0]);
+        holder.textEndTime.setText(post.getTimeEnd().split("T")[0]);
+        holder.cntRequest.setText(((Integer)post.getBabysisterRequest().size()).toString());
+        holder.parentID.setText(post.getParent().getUser().getId());
+        holder.parentName.setText(post.getParent().getName());
+
+        holder.avatar.setImageBitmap(null);
+        if (post.getBabysister() != null)
+            new CustomUtils.DownloadImageTask(holder.avatar)
+                    .execute(post.getBabysister().getAvatar());
     }
 
     @Override
@@ -67,6 +80,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         public TextView textPrice;
         public TextView textStartTime;
         public TextView textEndTime;
+        public ImageView avatar;
+        public TextView cntRequest;
+        public TextView parentID;
+        public TextView parentName;
 //        public Button detail_button;
 
         public ViewHolder(View itemView) {
@@ -76,18 +93,25 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             textPrice = itemView.findViewById(R.id.text_price);
             textStartTime = itemView.findViewById(R.id.textStartTime);
             textEndTime = itemView.findViewById(R.id.textEndTime);
-//            detail_button = itemView.findViewById(R.id.detail_button);
-
-//            //Xử lý khi nút Chi tiết được bấm
-//            detail_button.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Toast.makeText(view.getContext(),
-//                            studentname.getText() +" | "
-//                                    + " Demo function", Toast.LENGTH_SHORT)
-//                            .show();
-//                }
-//            });
+            avatar = itemView.findViewById(R.id.item_avatar);
+            cntRequest = itemView.findViewById(R.id.pd_cntRequest);
+            parentID = itemView.findViewById(R.id.pi_idparent);
+            parentName = itemView.findViewById(R.id.pi_nameParent);
+            itemview.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Log.d("abc", textStatus.getText().toString());
+                    StaticData.getInstance().setCurrentPostID(postList.get(getAdapterPosition()).getId());
+                    PostDetailFragment nextFrag= new PostDetailFragment();
+                    ((ParentActivity)mContext).getSupportFragmentManager().beginTransaction()
+                            .add(R.id.fragment_holder, nextFrag, "post_detail")
+                            .addToBackStack(null)
+                            .commit();
+                    Toast.makeText(view.getContext(),
+                            ""+getAdapterPosition(), Toast.LENGTH_SHORT)
+                            .show();
+                }
+            });
         }
     }
 

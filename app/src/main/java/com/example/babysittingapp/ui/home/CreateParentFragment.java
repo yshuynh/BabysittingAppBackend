@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,11 +18,13 @@ import com.example.babysittingapp.R;
 import com.example.babysittingapp.entity.PostCreatePost;
 import com.example.babysittingapp.service.APIService;
 import com.example.babysittingapp.service.APIUtils;
+import com.example.babysittingapp.service.StaticData;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -112,7 +115,7 @@ public class CreateParentFragment extends Fragment {
         editText = rootView.findViewById(R.id.fc_textTimeEnd);
         settingCalendar(rootView, editText);
 
-        Button submit = rootView.findViewById(R.id.btnSubmit);
+        Button submit = rootView.findViewById(R.id.cp_submit);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,17 +130,19 @@ public class CreateParentFragment extends Fragment {
                 post.setTimeEnd(endTime.getText().toString());
                 EditText childCount = rootView.findViewById(R.id.fc_numberchild);
                 post.setChildNumber(Integer.parseInt(childCount.getText().toString()));
-                post.setParent(APIUtils.loginToken.getUserId());
+                post.setParent(StaticData.getInstance().loginToken.getUserId());
 
                 APIService service = APIUtils.getAPIService();
-                service.putPost(post).enqueue(new Callback<String>() {
+                Log.d("abc","onclick");
+                service.putPost(post).enqueue(new Callback<ResponseBody>() {
                     @Override
-                    public void onResponse(Call<String> call, Response<String> response) {
-
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        StaticData.getInstance().refreshData();
+                        destroy();
                     }
 
                     @Override
-                    public void onFailure(Call<String> call, Throwable t) {
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
 
                     }
                 });
@@ -145,6 +150,11 @@ public class CreateParentFragment extends Fragment {
         });
 
         return rootView;
+    }
+
+    private void destroy() {
+        Log.d("abc", "destroy: ");
+        getActivity().getSupportFragmentManager().popBackStack();
     }
 
 

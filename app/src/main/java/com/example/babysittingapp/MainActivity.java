@@ -13,6 +13,7 @@ import com.example.babysittingapp.entity.LoginInfo;
 import com.example.babysittingapp.entity.LoginToken;
 import com.example.babysittingapp.service.APIService;
 import com.example.babysittingapp.service.APIUtils;
+import com.example.babysittingapp.service.StaticData;
 import com.google.android.material.snackbar.Snackbar;
 
 import retrofit2.Call;
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<LoginToken> call, Response<LoginToken> response) {
                 if (response.isSuccessful()) {
                     LoginToken loginToken = response.body();
-                    APIUtils.loginToken = loginToken;
+                    StaticData.getInstance().loginToken = loginToken;
                     Intent myIntent = new Intent(MainActivity.this, ParentActivity.class);
                     myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(myIntent);
