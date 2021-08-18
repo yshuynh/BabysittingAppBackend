@@ -246,5 +246,6 @@ public class PostDetailFragment extends Fragment implements Observer {
     public void onDestroy() {
         super.onDestroy();
         StaticData.getInstance().deleteObserver(this);
+        Log.d("abc", "detroy post detail");
     }
 }

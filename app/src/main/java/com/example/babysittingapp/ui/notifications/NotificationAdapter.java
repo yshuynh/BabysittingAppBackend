@@ -86,6 +86,12 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             itemview = itemView;
             title = itemView.findViewById(R.id.noti_title);
             content = itemView.findViewById(R.id.noti_content);
+            itemview.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((ParentActivity)mContext).goToPostDetail(notificationArrayList.get(getAdapterPosition()).getTargetId());
+                }
+            });
         }
     }
 

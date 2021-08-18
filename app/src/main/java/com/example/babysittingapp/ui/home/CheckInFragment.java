@@ -8,11 +8,13 @@ import androidx.fragment.app.Fragment;
 
 import android.text.InputType;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
@@ -218,6 +220,13 @@ public class CheckInFragment extends Fragment implements Observer {
                         // Create the Alert dialog
                         AlertDialog alertDialog = builder.create();
 
+                        alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+                            @Override
+                            public void onShow(DialogInterface arg0) {
+                                alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.Black));
+                                alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.Gray));
+                            }
+                        });
                         // Show the Alert Dialog box
                         alertDialog.show();
                     }
@@ -253,6 +262,8 @@ public class CheckInFragment extends Fragment implements Observer {
                 final EditText input = new EditText(getContext());
                 // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
                 input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_CLASS_NUMBER);
+                input.setGravity(Gravity.CENTER_HORIZONTAL);
+                input.setLayoutParams(new LinearLayout.LayoutParams(1,LinearLayout.LayoutParams.WRAP_CONTENT));
                 builder.setView(input);
 
                 // Set Alert Title
@@ -311,6 +322,13 @@ public class CheckInFragment extends Fragment implements Observer {
                 AlertDialog alertDialog = builder.create();
 
                 // Show the Alert Dialog box
+                alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+                    @Override
+                    public void onShow(DialogInterface arg0) {
+                        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.Black));
+                        alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.Gray));
+                    }
+                });
                 alertDialog.show();
             }
         });
@@ -365,7 +383,13 @@ public class CheckInFragment extends Fragment implements Observer {
 
                         // Create the Alert dialog
                         AlertDialog alertDialog = builder.create();
-
+                        alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+                            @Override
+                            public void onShow(DialogInterface arg0) {
+                                alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.Black));
+                                alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.Gray));
+                            }
+                        });
                         // Show the Alert Dialog box
                         alertDialog.show();
                     }

@@ -106,15 +106,16 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                 @Override
                 public void onClick(View view) {
                     Log.d("abc", textStatus.getText().toString());
-                    StaticData.getInstance().setCurrentPostID(postList.get(getAdapterPosition()).getId());
-                    PostDetailFragment nextFrag= new PostDetailFragment();
-                    ((ParentActivity)mContext).getSupportFragmentManager().beginTransaction()
-                            .add(R.id.fragment_holder, nextFrag, "post_detail")
-                            .addToBackStack(null)
-                            .commit();
-                    Toast.makeText(view.getContext(),
-                            ""+getAdapterPosition(), Toast.LENGTH_SHORT)
-                            .show();
+//                    StaticData.getInstance().setCurrentPostID(postId);
+                    ((ParentActivity)mContext).startPostDetailFragment(postList.get(getAdapterPosition()).getId());
+//                    PostDetailFragment nextFrag= new PostDetailFragment();
+//                    ((ParentActivity)mContext).getSupportFragmentManager().beginTransaction()
+//                            .add(R.id.fragment_holder, nextFrag, "post_detail")
+//                            .addToBackStack(null)
+//                            .commit();
+//                    Toast.makeText(view.getContext(),
+//                            ""+getAdapterPosition(), Toast.LENGTH_SHORT)
+//                            .show();
                 }
             });
         }
