@@ -2,6 +2,7 @@ package com.example.babysittingapp.service;
 
 import com.example.babysittingapp.entity.LoginInfo;
 import com.example.babysittingapp.entity.LoginToken;
+import com.example.babysittingapp.entity.User;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,11 +27,11 @@ public class TestRetrofit {
 //            }
 //        });
 
-        service.postLogin(new LoginInfo("admin2", "admin")).enqueue(new Callback<LoginToken>() {
+        service.postLogin(new LoginInfo("admin2", "admin")).enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call<LoginToken> call, Response<LoginToken> response) {
+            public void onResponse(Call<User> call, Response<User> response) {
                 if (response.isSuccessful()) {
-                    LoginToken loginInfo = response.body();
+                    User loginInfo = response.body();
                     System.out.println(loginInfo.getUsername());
                 }
                 else {
@@ -39,7 +40,7 @@ public class TestRetrofit {
             }
 
             @Override
-            public void onFailure(Call<LoginToken> call, Throwable t) {
+            public void onFailure(Call<User> call, Throwable t) {
 
             }
         });

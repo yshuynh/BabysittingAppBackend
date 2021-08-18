@@ -20,6 +20,7 @@ import com.example.babysittingapp.service.APIService;
 import com.example.babysittingapp.service.APIUtils;
 import com.example.babysittingapp.service.CustomUtils;
 import com.example.babysittingapp.service.StaticData;
+import com.example.babysittingapp.ui.dashboard.UserInfoFragment;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -101,7 +102,7 @@ public class BabysisterAdapter extends RecyclerView.Adapter<BabysisterAdapter.Vi
             age = itemview.findViewById(R.id.bb_age);
             gender = itemview.findViewById(R.id.bb_gender);
             job = itemview.findViewById(R.id.bb_job);
-            rating = itemview.findViewById(R.id.bb_rating);
+            rating = itemview.findViewById(R.id.rd_rate);
             avatar = itemview.findViewById(R.id.ud_avatar);
             button = itemView.findViewById(R.id.bb_button);
             if (!StaticData.getInstance().loginToken.getRole().equals("parent")) {
@@ -116,7 +117,8 @@ public class BabysisterAdapter extends RecyclerView.Adapter<BabysisterAdapter.Vi
                     APIService service = APIUtils.getAPIService();
                     Log.d("abc", babysister.getId());
                     RequestBody babysisterID = RequestBody.create(MediaType.parse("text/plain"), babysister.getId());
-                    service.updatePost(post.getId(), babysisterID).enqueue(new Callback<ResponseBody>() {
+                    RequestBody status = RequestBody.create(MediaType.parse("text/plain"), "matched");
+                    service.updatePost(post.getId(), babysisterID, status).enqueue(new Callback<ResponseBody>() {
                         @Override
                         public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                             if (response.isSuccessful()) {

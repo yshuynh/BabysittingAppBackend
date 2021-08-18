@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.babysittingapp.entity.LoginInfo;
 import com.example.babysittingapp.entity.LoginToken;
+import com.example.babysittingapp.entity.User;
 import com.example.babysittingapp.service.APIService;
 import com.example.babysittingapp.service.APIUtils;
 import com.example.babysittingapp.service.StaticData;
@@ -34,11 +35,11 @@ public class MainActivity extends AppCompatActivity {
         LoginInfo loginInfo = new LoginInfo(txtUsername.getText().toString(), txtPassword.getText().toString());
         APIService service = APIUtils.getAPIService();
         Log.d("abc", txtPassword.getText().toString());
-        service.postLogin(loginInfo).enqueue(new Callback<LoginToken>() {
+        service.postLogin(loginInfo).enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call<LoginToken> call, Response<LoginToken> response) {
+            public void onResponse(Call<User> call, Response<User> response) {
                 if (response.isSuccessful()) {
-                    LoginToken loginToken = response.body();
+                    User loginToken = response.body();
                     StaticData.getInstance().loginToken = loginToken;
                     Intent myIntent = new Intent(MainActivity.this, ParentActivity.class);
                     myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<LoginToken> call, Throwable t) {
+            public void onFailure(Call<User> call, Throwable t) {
                 Log.d("abc", "on failure" + t.getMessage());
             }
         });

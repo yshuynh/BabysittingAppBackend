@@ -4,6 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class User {
 
+    @SerializedName("money")
+    @Expose
+    private Integer money;
     @SerializedName("id")
     @Expose
     private String id;
@@ -49,6 +52,14 @@ public class User {
     @SerializedName("gender")
     @Expose
     private Boolean gender;
+
+    public Integer getMoney() {
+        return money;
+    }
+
+    public void setMoney(Integer money) {
+        this.money = money;
+    }
 
     public String getId() {
         return id;

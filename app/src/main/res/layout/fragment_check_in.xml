@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".ui.home.CheckInFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
+
+        <Button
+            android:id="@+id/ci_buttonCheckin"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="36dp"
+            android:enabled="false"
+            android:text="Check in"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/ci_buttonCheckout"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="24dp"
+            android:enabled="false"
+            android:text="Check out"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ci_buttonCheckin" />
+
+        <Button
+            android:id="@+id/ci_buttonThanhtoan"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="24dp"
+            android:enabled="false"
+            android:text="Thanh toán"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ci_buttonCheckout" />
+
+        <Button
+            android:id="@+id/ci_buttonDanhGia"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="24dp"
+            android:enabled="false"
+            android:text="Đánh giá"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ci_buttonThanhtoan" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

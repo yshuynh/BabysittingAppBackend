@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.babysittingapp.entity.Babysister;
 import com.example.babysittingapp.entity.LoginToken;
+import com.example.babysittingapp.entity.Notification;
 import com.example.babysittingapp.entity.Post;
 import com.example.babysittingapp.entity.User;
 import com.example.babysittingapp.ui.home.PostAdapter;
@@ -20,10 +21,11 @@ import retrofit2.Response;
 
 public class StaticData extends Observable {
     public static StaticData instance = null;
-    public LoginToken loginToken = null;
+    public User loginToken = null;
     private ArrayList<Post> post_list;
     private String currentPostID = "";
     public User currentUser = null;
+    private ArrayList<Notification> notification_list;
 
     public ArrayList<Post> getPost_list() {
         return post_list;
@@ -34,6 +36,19 @@ public class StaticData extends Observable {
             instance = new StaticData();
         }
         return instance;
+    }
+
+    private StaticData() {
+        NotificationUtil.getInstance();
+    }
+
+    public ArrayList<Notification> getNotification_list() {
+        return notification_list;
+    }
+
+    public void setNotification_list(ArrayList<Notification> notification_list) {
+        this.notification_list = notification_list;
+        customNotify();
     }
 
     public void setCurrentPostID(String id) {

@@ -1,27 +1,40 @@
-package com.example.babysittingapp.ui.home;
+package com.example.babysittingapp.ui.dashboard;
 
-import android.media.Image;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.babysittingapp.R;
+import com.example.babysittingapp.entity.RatingDetail;
 import com.example.babysittingapp.entity.User;
+import com.example.babysittingapp.service.APIService;
+import com.example.babysittingapp.service.APIUtils;
 import com.example.babysittingapp.service.CustomUtils;
 import com.example.babysittingapp.service.StaticData;
+
+import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link UserInfoFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class UserInfoFragment extends Fragment {
+public class UserInfoFragment extends Fragment implements Observer {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -69,6 +82,7 @@ public class UserInfoFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_user_info, container, false);
         mapData(rootView);
+        createRecycleView(rootView);
         return rootView;
     }
 
@@ -83,6 +97,8 @@ public class UserInfoFragment extends Fragment {
         TextView phone = rootView.findViewById(R.id.ud_phone);
         ImageView avatar = rootView.findViewById(R.id.ud_avatar);
         TextView name = rootView.findViewById(R.id.ud_name);
+        TextView money = rootView.findViewById(R.id.ud_money);
+        RatingBar ratingBar = rootView.findViewById(R.id.ud_ratingBar);
         // Set Data
         id.setText(userData.getId());
         gender.setText(userData.getGender()?"Nam":"Nữ");
@@ -93,5 +109,38 @@ public class UserInfoFragment extends Fragment {
         new CustomUtils.DownloadImageTask(avatar)
                 .execute(userData.getAvatar());
         name.setText(userData.getName());
+        money.setText(userData.getMoney().toString());
+        ratingBar.setRating(userData.getRating().getAvg());
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        if (getView() != null) {
+            mapData(getView());
+            createRecycleView(getView());
+        }
+    }
+
+    private void createRecycleView(View rootView) {
+        User userData = StaticData.getInstance().currentUser;
+        RecyclerView recyclerView = rootView.findViewById(R.id.ui_recycleView);
+        APIService service = APIUtils.getAPIService();
+        service.getRatingDetail(userData.getId()).enqueue(new Callback<ArrayList<RatingDetail>>() {
+            @Override
+            public void onResponse(Call<ArrayList<RatingDetail>> call, Response<ArrayList<RatingDetail>> response) {
+                if (!response.isSuccessful()) return;
+                ArrayList<RatingDetail> list_String = response.body();
+                RatingDetailAdapter adapter = new RatingDetailAdapter(list_String, getContext());
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+                recyclerView.setAdapter(adapter);
+                recyclerView.setLayoutManager(linearLayoutManager);
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<RatingDetail>> call, Throwable t) {
+
+            }
+        });
+
     }
 }

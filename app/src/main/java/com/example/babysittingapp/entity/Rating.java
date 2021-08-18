@@ -9,7 +9,7 @@ public class Rating {
     private Integer count;
     @SerializedName("avg")
     @Expose
-    private Double avg;
+    private Float avg;
 
     public Integer getCount() {
         return count;
@@ -19,11 +19,11 @@ public class Rating {
         this.count = count;
     }
 
-    public Double getAvg() {
+    public Float getAvg() {
         return avg;
     }
 
-    public void setAvg(Double avg) {
+    public void setAvg(Float avg) {
         this.avg = avg;
     }
 }
