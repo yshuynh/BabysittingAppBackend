@@ -18,7 +18,7 @@
             android:layout_height="50dp"
             android:layout_marginStart="36dp"
             android:layout_marginLeft="36dp"
-            android:layout_marginTop="152dp"
+            android:layout_marginTop="200dp"
             android:ems="10"
             android:hint="Số lượng trẻ"
             android:inputType="number"
@@ -29,9 +29,9 @@
             android:id="@+id/fc_textAge"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:layout_marginStart="216dp"
-            android:layout_marginLeft="216dp"
-            android:layout_marginTop="152dp"
+            android:layout_marginStart="228dp"
+            android:layout_marginLeft="228dp"
+            android:layout_marginTop="200dp"
             android:ems="10"
             android:hint="Độ tuổi trung bình"
             android:inputType="number"
@@ -49,16 +49,38 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+<!--        <Button-->
+<!--            android:id="@+id/button3"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="280dp"-->
+<!--            android:layout_marginLeft="280dp"-->
+<!--            android:layout_marginTop="72dp"-->
+<!--            android:text="Chose"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+
         <Button
             android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="280dp"
             android:layout_marginLeft="280dp"
-            android:layout_marginTop="72dp"
+            android:layout_marginTop="8dp"
             android:text="Chose"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="280dp"
+            android:layout_marginLeft="280dp"
+            android:layout_marginTop="8dp"
+            android:text="Chose"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button3" />
 
         <EditText
             android:id="@+id/fc_textTimeStart"
@@ -66,27 +88,53 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
             android:layout_marginLeft="36dp"
-            android:layout_marginTop="16dp"
             android:ems="10"
             android:focusable="false"
             android:hint="Ngày bắt đầu"
             android:inputType="textPersonName"
+            app:layout_constraintBottom_toBottomOf="@+id/button2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/button2" />
+
+<!--        <EditText-->
+<!--            android:id="@+id/fc_textTimeEnd"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="36dp"-->
+<!--            android:layout_marginLeft="36dp"-->
+<!--            android:layout_marginTop="72dp"-->
+<!--            android:ems="10"-->
+<!--            android:focusable="false"-->
+<!--            android:hint="Ngày kết thúc"-->
+<!--            android:inputType="textPersonName"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
         <EditText
-            android:id="@+id/fc_textTimeEnd"
+            android:id="@+id/fc_timeStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
             android:layout_marginLeft="36dp"
-            android:layout_marginTop="72dp"
             android:ems="10"
             android:focusable="false"
-            android:hint="Ngày kết thúc"
+            android:hint="Giờ bắt đầu"
             android:inputType="textPersonName"
+            app:layout_constraintBottom_toBottomOf="@+id/button3"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+        <EditText
+            android:id="@+id/fc_timeEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:focusable="false"
+            android:hint="Giờ kết thúc"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toBottomOf="@+id/button4"
+            app:layout_constraintStart_toStartOf="@+id/fc_timeStart"
+            app:layout_constraintTop_toBottomOf="@+id/button3" />
 
         <EditText
             android:id="@+id/fc_price"
@@ -94,7 +142,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
             android:layout_marginLeft="36dp"
-            android:layout_marginTop="228dp"
+            android:layout_marginTop="268dp"
             android:ems="10"
             android:hint="Chi phí"
             android:inputType="number"
@@ -105,7 +153,7 @@
             android:id="@+id/cp_submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="316dp"
+            android:layout_marginTop="380dp"
             android:text="Tạo bài đăng"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

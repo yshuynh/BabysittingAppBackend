@@ -89,6 +89,7 @@ public class HomeFragment extends Fragment implements java.util.Observer {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+        StaticData.getInstance().deleteObserver(this);
     }
 
     @Override

@@ -89,7 +89,13 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             itemview.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((ParentActivity)mContext).goToPostDetail(notificationArrayList.get(getAdapterPosition()).getTargetId());
+                    Notification noti = notificationArrayList.get(getAdapterPosition());
+                    if (noti.getType().equals("rating")) {
+                        ((ParentActivity)mContext).switchToDashboard();
+                    } else {
+                        ((ParentActivity)mContext).goToPostDetail(noti.getTargetId());
+                    }
+                    ((ParentActivity)mContext).deleteNoti();
                 }
             });
         }

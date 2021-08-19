@@ -18,258 +18,258 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/BG"
             android:orientation="vertical">
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/card_view"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="2dp"
-                app:contentPadding="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:background="@color/white"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cardView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:cardCornerRadius="75dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <android.support.v7.widget.CardView
-                        android:id="@+id/cardView5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        app:cardCornerRadius="75dp"
-                        app:cardPreventCornerOverlap="false"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                    <ImageView
+                        android:id="@+id/ud_avatar"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:background="@drawable/img"
+                        android:scaleType="centerCrop"
+                        tools:srcCompat="@tools:sample/avatars" />
 
-                        <ImageView
-                            android:id="@+id/ud_avatar"
-                            android:layout_width="150dp"
-                            android:layout_height="150dp"
-                            android:background="@drawable/img"
-                            android:scaleType="centerCrop"
-                            tools:srcCompat="@tools:sample/avatars" />
+                </android.support.v7.widget.CardView>
 
-                    </android.support.v7.widget.CardView>
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="Địa chỉ:"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/guideline3"
+                    app:layout_constraintTop_toTopOf="@+id/guideline" />
 
-                    <TextView
-                        android:id="@+id/textView20"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="8dp"
-                        android:paddingBottom="8dp"
-                        android:text="Địa chỉ:"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@+id/guideline3"
-                        app:layout_constraintTop_toTopOf="@+id/guideline" />
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="Email:"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/guideline3"
+                    app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
-                    <TextView
-                        android:id="@+id/textView22"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="8dp"
-                        android:paddingBottom="8dp"
-                        android:text="Email:"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@+id/guideline3"
-                        app:layout_constraintTop_toBottomOf="@+id/textView20" />
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="Công việc:"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/guideline3"
+                    app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
-                    <TextView
-                        android:id="@+id/textView23"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="8dp"
-                        android:paddingBottom="8dp"
-                        android:text="Công việc:"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@+id/guideline3"
-                        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+                <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="Số điện thoại:"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/guideline3"
+                    app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
-                    <TextView
-                        android:id="@+id/textView24"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="8dp"
-                        android:paddingBottom="8dp"
-                        android:text="Số điện thoại:"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@+id/guideline3"
-                        app:layout_constraintTop_toBottomOf="@+id/textView23" />
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="Số tiền:"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/guideline3"
+                    app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
-                    <TextView
-                        android:id="@+id/textView21"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="8dp"
-                        android:paddingBottom="8dp"
-                        android:text="Số tiền:"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@+id/guideline3"
-                        app:layout_constraintTop_toBottomOf="@+id/textView24" />
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_begin="229dp" />
 
-                    <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/guideline"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        app:layout_constraintGuide_begin="229dp" />
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="16dp" />
 
-                    <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/guideline3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_constraintGuide_begin="16dp" />
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="386dp" />
 
-                    <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/guideline4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_constraintGuide_begin="386dp" />
+                <TextView
+                    android:id="@+id/ud_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Huỳnh Tấn Ý"
+                    android:textSize="25sp"
+                    android:textStyle="bold|italic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ud_ratingBar" />
 
-                    <TextView
-                        android:id="@+id/ud_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Huỳnh Tấn Ý"
-                        android:textSize="25sp"
-                        android:textStyle="bold|italic"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ud_ratingBar" />
+                <TextView
+                    android:id="@+id/ud_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView20"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                    app:layout_constraintTop_toTopOf="@+id/textView20" />
 
-                    <TextView
-                        android:id="@+id/ud_address"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="TextView"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView20"
-                        app:layout_constraintEnd_toStartOf="@+id/guideline4"
-                        app:layout_constraintTop_toTopOf="@+id/textView20" />
+                <TextView
+                    android:id="@+id/ud_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView22"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                    app:layout_constraintTop_toTopOf="@+id/textView22" />
 
-                    <TextView
-                        android:id="@+id/ud_email"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="TextView"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView22"
-                        app:layout_constraintEnd_toStartOf="@+id/guideline4"
-                        app:layout_constraintTop_toTopOf="@+id/textView22" />
+                <TextView
+                    android:id="@+id/ud_job"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView23"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                    app:layout_constraintTop_toTopOf="@+id/textView23" />
 
-                    <TextView
-                        android:id="@+id/ud_job"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="TextView"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView23"
-                        app:layout_constraintEnd_toStartOf="@+id/guideline4"
-                        app:layout_constraintTop_toTopOf="@+id/textView23" />
+                <TextView
+                    android:id="@+id/ud_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView24"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                    app:layout_constraintTop_toTopOf="@+id/textView24" />
 
-                    <TextView
-                        android:id="@+id/ud_phone"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="TextView"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView24"
-                        app:layout_constraintEnd_toStartOf="@+id/guideline4"
-                        app:layout_constraintTop_toTopOf="@+id/textView24" />
+                <TextView
+                    android:id="@+id/ud_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView21"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                    app:layout_constraintTop_toTopOf="@+id/textView21" />
 
-                    <TextView
-                        android:id="@+id/ud_money"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="TextView"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView21"
-                        app:layout_constraintEnd_toStartOf="@+id/guideline4"
-                        app:layout_constraintTop_toTopOf="@+id/textView21" />
+                <TextView
+                    android:id="@+id/ud_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="US_abcde"
+                    app:layout_constraintBottom_toBottomOf="@+id/cardView5"
+                    app:layout_constraintEnd_toStartOf="@+id/cardView5"
+                    app:layout_constraintHorizontal_bias="0.8"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/cardView5"
+                    app:layout_constraintVertical_bias="1.0" />
 
-                    <TextView
-                        android:id="@+id/ud_id"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="US_abcde"
-                        app:layout_constraintBottom_toBottomOf="@+id/cardView5"
-                        app:layout_constraintEnd_toStartOf="@+id/cardView5"
-                        app:layout_constraintHorizontal_bias="0.8"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/cardView5"
-                        app:layout_constraintVertical_bias="1.0" />
+                <TextView
+                    android:id="@+id/ud_gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nam"
+                    app:layout_constraintBottom_toBottomOf="@+id/cardView5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.2"
+                    app:layout_constraintStart_toEndOf="@+id/cardView5"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0" />
 
-                    <TextView
-                        android:id="@+id/ud_gender"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Nam"
-                        app:layout_constraintBottom_toBottomOf="@+id/cardView5"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.2"
-                        app:layout_constraintStart_toEndOf="@+id/cardView5"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="1.0" />
+                <TextView
+                    android:id="@+id/textView32"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="UserID"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/ud_id"
+                    app:layout_constraintEnd_toEndOf="@+id/ud_id"
+                    app:layout_constraintStart_toStartOf="@+id/ud_id" />
 
-                    <TextView
-                        android:id="@+id/textView32"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="UserID"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toTopOf="@+id/ud_id"
-                        app:layout_constraintEnd_toEndOf="@+id/ud_id"
-                        app:layout_constraintStart_toStartOf="@+id/ud_id" />
+                <TextView
+                    android:id="@+id/textView33"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Giới tính"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/ud_gender"
+                    app:layout_constraintEnd_toEndOf="@+id/ud_gender"
+                    app:layout_constraintStart_toStartOf="@+id/ud_gender" />
 
-                    <TextView
-                        android:id="@+id/textView33"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Giới tính"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toTopOf="@+id/ud_gender"
-                        app:layout_constraintEnd_toEndOf="@+id/ud_gender"
-                        app:layout_constraintStart_toStartOf="@+id/ud_gender" />
+                <RatingBar
+                    android:id="@+id/ud_ratingBar"
+                    style="@android:style/Widget.DeviceDefault.Light.RatingBar.Indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scrollbarSize="4dp"
+                    android:stepSize="0.5"
+                    android:theme="@style/RatingBar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView5" />
 
-                    <RatingBar
-                        android:id="@+id/ud_ratingBar"
-                        style="@android:style/Widget.DeviceDefault.Light.RatingBar.Indicator"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:scrollbarSize="4dp"
-                        android:stepSize="0.5"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/cardView5"
-                        android:theme="@style/RatingBar"/>
+                <ToggleButton
+                    android:id="@+id/favoriteButton"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/favorite_button"
+                    android:textOn=""
+                    android:textOff=""
+                    android:text=""
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </android.support.v7.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/textView25"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
+                android:background="@color/white"
+                android:paddingLeft="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
                 android:text="Các đánh giá:"
                 android:textSize="22sp"
                 android:textStyle="bold" />
@@ -278,7 +278,7 @@
                 android:id="@+id/ui_recycleView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:layout_editor_absoluteY="244dp" >
+                tools:layout_editor_absoluteY="244dp">
 
             </androidx.recyclerview.widget.RecyclerView>
 

@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,7 +15,6 @@ import com.example.babysittingapp.ParentActivity;
 import com.example.babysittingapp.R;
 import com.example.babysittingapp.entity.Post;
 import com.example.babysittingapp.service.CustomUtils;
-import com.example.babysittingapp.service.StaticData;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -53,8 +51,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         Post post = postList.get(position);
         holder.textStatus.setText(post.getStatus());
         holder.textPrice.setText(post.getPrice().toString());
-        holder.textStartTime.setText(post.getTimeStart().split("T")[0]);
-        holder.textEndTime.setText(post.getTimeEnd().split("T")[0]);
+        holder.textStartTime.setText(post.getDateTimeStart().split("T")[0]);
+        holder.textEndTime.setText(post.getTimeStart() + " - " + post.getTimeEnd());
         holder.cntRequest.setText(((Integer)post.getBabysisterRequest().size()).toString());
 //        holder.parentID.setText(post.getParent().getId());
         holder.parentName.setText(post.getParent().getName());

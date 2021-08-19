@@ -1,4 +1,7 @@
 <resources>
+    <string name="logout">Đăng xuất</string>
+    <string name="info">Xem thông tin</string>
+    <string name="noti">Thông báo</string>
     <string name="app_name">BabysittingApp</string>
     <string name="title_activity_parent">MainActivity</string>
     <string name="title_home">Home</string>

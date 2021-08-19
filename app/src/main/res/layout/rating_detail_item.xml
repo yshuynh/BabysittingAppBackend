@@ -4,96 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:clickable="true">
+    android:layout_marginTop="1dp"
+    android:background="@color/white"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground">
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/card_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_margin="5dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        app:cardBackgroundColor="#FFFFFF"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="2dp"
-        app:contentPadding="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardPreventCornerOverlap="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="?android:attr/selectableItemBackground">
+        <TextView
+            android:id="@+id/bb_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Mức đánh giá:"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/cardView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                app:cardCornerRadius="50dp"
-                app:cardPreventCornerOverlap="false"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bình luận:"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/bb_name"
+            app:layout_constraintTop_toBottomOf="@+id/bb_name" />
 
-            <TextView
-                android:id="@+id/bb_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"
-                android:text="Mức đánh giá:"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/rd_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="4.5/5"
+            app:layout_constraintBottom_toBottomOf="@+id/bb_name"
+            app:layout_constraintStart_toEndOf="@+id/bb_name"
+            app:layout_constraintTop_toTopOf="@+id/bb_name" />
 
-            <TextView
-                android:id="@+id/textView13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Bình luận:"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/bb_name"
-                app:layout_constraintTop_toBottomOf="@+id/bb_name" />
-
-            <TextView
-                android:id="@+id/rd_rate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:text="4.5/5"
-                app:layout_constraintBottom_toBottomOf="@+id/bb_name"
-                app:layout_constraintStart_toEndOf="@+id/bb_name"
-                app:layout_constraintTop_toTopOf="@+id/bb_name" />
-
-            <TextView
-                android:id="@+id/rd_comment"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="8dp"
-                android:text="Người này rất tốt bụng. sdkljasj dald jaslkd ajskld asjkld asjldka sdlkas djasjd aslkdj alskdj álkd"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView13"
-                app:layout_constraintTop_toTopOf="@+id/textView13" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </android.support.v7.widget.CardView>
+        <TextView
+            android:id="@+id/rd_comment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Người này rất tốt bụng. sdkljasj dald jaslkd ajskld asjkld asjldka sdlkas djasjd aslkdj alskdj álkd"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView13"
+            app:layout_constraintTop_toTopOf="@+id/textView13" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

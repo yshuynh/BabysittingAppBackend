@@ -23,18 +23,45 @@ public class Post {
     @SerializedName("age_avg")
     @Expose
     private Integer ageAvg;
+    @SerializedName("date_time_start")
+    @Expose
+    private String dateTimeStart;
+
+    public String getTimeStart() {
+        return timeStart;
+    }
+
+    public void setTimeStart(String timeStart) {
+        this.timeStart = timeStart;
+    }
+
     @SerializedName("time_start")
     @Expose
     private String timeStart;
     @SerializedName("time_end")
     @Expose
     private String timeEnd;
+//    @SerializedName("date_time_end")
+//    @Expose
+//    private String timeEnd;
     @SerializedName("price")
     @Expose
     private Integer price;
     @SerializedName("status")
     @Expose
     private String status;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    @SerializedName("address")
+    @Expose
+    private String address;
 
     public String getId() {
         return id;
@@ -84,12 +111,12 @@ public class Post {
         this.ageAvg = ageAvg;
     }
 
-    public String getTimeStart() {
-        return timeStart;
+    public String getDateTimeStart() {
+        return dateTimeStart;
     }
 
-    public void setTimeStart(String timeStart) {
-        this.timeStart = timeStart;
+    public void setDateTimeStart(String dateTimeStart) {
+        this.dateTimeStart = dateTimeStart;
     }
 
     public String getTimeEnd() {

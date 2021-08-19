@@ -13,6 +13,20 @@ public class PostCreatePost {
     @SerializedName("age_avg")
     @Expose
     private Integer ageAvg;
+    @SerializedName("date_time_start")
+    @Expose
+    private String dateTimeStart;
+//    @SerializedName("time_end")
+//    @Expose
+//    private String timeEnd;
+public String getTimeStart() {
+    return timeStart;
+}
+
+    public void setTimeStart(String timeStart) {
+        this.timeStart = timeStart;
+    }
+
     @SerializedName("time_start")
     @Expose
     private String timeStart;
@@ -35,8 +49,8 @@ public class PostCreatePost {
         this.ageAvg = ageAvg;
     }
 
-    public void setTimeStart(String timeStart) {
-        this.timeStart = timeStart;
+    public void setDateTimeStart(String dateTimeStart) {
+        this.dateTimeStart = dateTimeStart;
     }
 
     public void setTimeEnd(String timeEnd) {

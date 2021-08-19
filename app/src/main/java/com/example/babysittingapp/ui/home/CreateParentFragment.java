@@ -1,6 +1,9 @@
 package com.example.babysittingapp.ui.home;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TimePicker;
 
 import com.example.babysittingapp.R;
 import com.example.babysittingapp.entity.PostCreatePost;
@@ -93,9 +97,17 @@ public class CreateParentFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                new DatePickerDialog(getContext(), date, myCalendar
+                DatePickerDialog dt = new DatePickerDialog(getContext(), date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                        myCalendar.get(Calendar.DAY_OF_MONTH));
+                dt.setOnShowListener(new DialogInterface.OnShowListener() {
+                    @Override
+                    public void onShow(DialogInterface arg0) {
+                        dt.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.Black));
+                        dt.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.Gray));
+                    }
+                });
+                dt.show();
             }
         });
     }
@@ -106,14 +118,44 @@ public class CreateParentFragment extends Fragment {
         editText.setText(sdf.format(myCalendar.getTime()));
     }
 
+    private void settingTimePicker(View view, EditText editText) {
+        Calendar mcurrentTime = Calendar.getInstance();
+        editText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        editText.setText( selectedHour + ":" + selectedMinute);
+                    }
+                }, hour, minute, true);//Yes 24 hour time
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.setOnShowListener(new DialogInterface.OnShowListener() {
+                    @Override
+                    public void onShow(DialogInterface arg0) {
+                        mTimePicker.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.Black));
+                        mTimePicker.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.Gray));
+                    }
+                });
+                mTimePicker.show();
+            }
+        });
+
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_create_parent, container, false);
         EditText editText = rootView.findViewById(R.id.fc_textTimeStart);
         settingCalendar(rootView, editText);
-        editText = rootView.findViewById(R.id.fc_textTimeEnd);
-        settingCalendar(rootView, editText);
+        editText = rootView.findViewById(R.id.fc_timeStart);
+        settingTimePicker(rootView, editText);
+        editText = rootView.findViewById(R.id.fc_timeEnd);
+        settingTimePicker(rootView, editText);
 
         Button submit = rootView.findViewById(R.id.cp_submit);
         submit.setOnClickListener(new View.OnClickListener() {
@@ -124,10 +166,12 @@ public class CreateParentFragment extends Fragment {
                 post.setPrice(Integer.parseInt(price.getText().toString()));
                 EditText age = rootView.findViewById(R.id.fc_textAge);
                 post.setAgeAvg(Integer.parseInt(age.getText().toString()));
-                EditText startTime = rootView.findViewById(R.id.fc_textTimeStart);
-                post.setTimeStart(startTime.getText().toString());
-                EditText endTime = rootView.findViewById(R.id.fc_textTimeEnd);
-                post.setTimeEnd(endTime.getText().toString());
+                EditText startDate = rootView.findViewById(R.id.fc_textTimeStart);
+                post.setDateTimeStart(startDate.getText().toString());
+                EditText timeStart = rootView.findViewById(R.id.fc_timeStart);
+                post.setTimeStart(timeStart.getText().toString());
+                EditText timeEnd = rootView.findViewById(R.id.fc_timeEnd);
+                post.setTimeEnd(timeEnd.getText().toString());
                 EditText childCount = rootView.findViewById(R.id.fc_numberchild);
                 post.setChildNumber(Integer.parseInt(childCount.getText().toString()));
                 post.setParent(StaticData.getInstance().loginToken.getId());

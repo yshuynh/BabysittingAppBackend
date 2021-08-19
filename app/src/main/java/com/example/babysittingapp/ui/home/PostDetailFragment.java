@@ -16,7 +16,6 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.babysittingapp.ParentActivity;
 import com.example.babysittingapp.R;
 import com.example.babysittingapp.entity.Post;
 import com.example.babysittingapp.entity.User;
@@ -168,6 +167,7 @@ public class PostDetailFragment extends Fragment implements Observer {
     }
 
     private void mapBabyAccepted(View rootView) {
+        if (rootView == null) return;
         User babyData = StaticData.getInstance().getCurrentPost().getBabysister();
         View babyItemAccepted = rootView.findViewById(R.id.bb_itemBabyAccepted);
         babyItemAccepted.setOnClickListener(new View.OnClickListener() {
@@ -213,16 +213,24 @@ public class PostDetailFragment extends Fragment implements Observer {
 
     private void mapData(View rootView) {
         EditText dayStart = rootView.findViewById(R.id.pd_start);
+        dayStart.setKeyListener(null);
         EditText dayEnd = rootView.findViewById(R.id.pd_end);
+        dayEnd.setKeyListener(null);
         EditText cnt = rootView.findViewById(R.id.pd_cnt);
+        cnt.setKeyListener(null);
         EditText avg = rootView.findViewById(R.id.pd_age);
+        avg.setKeyListener(null);
         EditText price = rootView.findViewById(R.id.pd_price);
+        price.setKeyListener(null);
+        EditText address = rootView.findViewById(R.id.pd_address);
+        address.setKeyListener(null);
         Post post = StaticData.getInstance().getCurrentPost();
-        dayStart.setText(post.getTimeStart().split("T")[0]);
-        dayEnd.setText(post.getTimeEnd().split("T")[0]);
+        dayStart.setText(post.getDateTimeStart().split("T")[0]);
+        dayEnd.setText(post.getTimeStart() + " - " + post.getTimeEnd());
         cnt.setText(post.getChildNumber().toString());
         avg.setText(post.getAgeAvg().toString());
         price.setText(post.getPrice().toString());
+        address.setText(post.getAddress());
     }
 
     private void createRecycleView(View rootView) {
@@ -237,6 +245,11 @@ public class PostDetailFragment extends Fragment implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         Log.d("abc","update post detail fragment");
+        if (getView() == null) {
+            StaticData.getInstance().deleteObserver(this);
+            onDestroy();
+            return;
+        }
         mapBabyAccepted(getView());
         editButtonAction(getView());
         createRecycleView(getView());

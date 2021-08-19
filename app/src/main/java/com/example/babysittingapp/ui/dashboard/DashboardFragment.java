@@ -29,7 +29,6 @@ public class DashboardFragment extends Fragment {
         UserInfoFragment nextFrag= new UserInfoFragment();
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_holder_dashboard, nextFrag, "userInfo")
-                .addToBackStack(null)
                 .commit();
 
 //        final TextView textView = binding.textDashboard;
