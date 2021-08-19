@@ -174,7 +174,7 @@ public class CreateParentFragment extends Fragment {
                 post.setTimeEnd(timeEnd.getText().toString());
                 EditText childCount = rootView.findViewById(R.id.fc_numberchild);
                 post.setChildNumber(Integer.parseInt(childCount.getText().toString()));
-                post.setParent(StaticData.getInstance().loginToken.getId());
+                post.setParent(StaticData.getInstance().getLoginToken().getId());
 
                 APIService service = APIUtils.getAPIService();
                 Log.d("abc","onclick");

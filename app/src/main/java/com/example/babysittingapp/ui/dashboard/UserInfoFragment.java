@@ -9,9 +9,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.example.babysittingapp.R;
 import com.example.babysittingapp.entity.RatingDetail;
@@ -95,10 +97,11 @@ public class UserInfoFragment extends Fragment implements Observer {
         TextView email = rootView.findViewById(R.id.ud_email);
         TextView job = rootView.findViewById(R.id.ud_job);
         TextView phone = rootView.findViewById(R.id.ud_phone);
-        ImageView avatar = rootView.findViewById(R.id.ud_avatar);
+        ImageView avatar = rootView.findViewById(R.id.fv_avatar);
         TextView name = rootView.findViewById(R.id.ud_name);
         TextView money = rootView.findViewById(R.id.ud_money);
         RatingBar ratingBar = rootView.findViewById(R.id.ud_ratingBar);
+        ToggleButton favoriteButton = rootView.findViewById(R.id.bb_favoriteButton);
         // Set Data
         id.setText(userData.getId());
         gender.setText(userData.getGender()?"Nam":"Nữ");
@@ -111,6 +114,17 @@ public class UserInfoFragment extends Fragment implements Observer {
         name.setText(userData.getName());
         money.setText(userData.getMoney().toString());
         ratingBar.setRating(userData.getRating().getAvg());
+        favoriteButton.setChecked(StaticData.getInstance().isFavorite(userData));
+        favoriteButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    StaticData.getInstance().addFavoriteUsers(userData);
+                } else {
+                    // The toggle is disabled
+                    StaticData.getInstance().removeFavoriteUser(userData);
+                }
+            }
+        });
     }
 
     @Override

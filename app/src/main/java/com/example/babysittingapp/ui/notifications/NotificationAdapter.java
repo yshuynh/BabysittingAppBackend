@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.babysittingapp.ParentActivity;
@@ -22,6 +23,7 @@ import com.example.babysittingapp.service.APIUtils;
 import com.example.babysittingapp.service.CustomUtils;
 import com.example.babysittingapp.service.StaticData;
 import com.example.babysittingapp.ui.dashboard.UserInfoFragment;
+import com.example.babysittingapp.ui.home.PostDetailFragment;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -93,7 +95,9 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                     if (noti.getType().equals("rating")) {
                         ((ParentActivity)mContext).switchToDashboard();
                     } else {
-                        ((ParentActivity)mContext).goToPostDetail(noti.getTargetId());
+                        StaticData.getInstance().setCurrentPostID(noti.getTargetId());
+                        Fragment fragment = new PostDetailFragment();
+                        ((ParentActivity)mContext).startFragmentTag(fragment, "postDetail");
                     }
                     ((ParentActivity)mContext).deleteNoti();
                 }

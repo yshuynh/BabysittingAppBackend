@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="160dp"
-    android:layout_marginTop="8dp"
+    android:layout_marginTop="1dp"
     android:background="@color/white"
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground">
@@ -167,7 +167,7 @@
         app:layout_constraintTop_toTopOf="@+id/item_avatar_parent">
 
         <ImageView
-            android:id="@+id/ud_avatar"
+            android:id="@+id/fv_avatar"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/img"

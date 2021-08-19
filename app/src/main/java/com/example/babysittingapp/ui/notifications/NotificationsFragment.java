@@ -19,7 +19,9 @@ import com.example.babysittingapp.R;
 import com.example.babysittingapp.databinding.ParentFragmentNotificationsBinding;
 import com.example.babysittingapp.entity.Notification;
 import com.example.babysittingapp.entity.Post;
+import com.example.babysittingapp.entity.User;
 import com.example.babysittingapp.service.StaticData;
+import com.example.babysittingapp.ui.home.BabysisterAdapter;
 import com.example.babysittingapp.ui.home.PostAdapter;
 
 import java.util.ArrayList;
@@ -48,9 +50,9 @@ public class NotificationsFragment extends Fragment implements java.util.Observe
             return;
         }
         RecyclerView recyclerView = binding.notiRecycleview;
-        ArrayList<Notification> list_String = StaticData.getInstance().getNotification_list();
+        ArrayList<User> list_String = StaticData.getInstance().getFavoriteUsers();
         Log.d("abc", "aaaa" + list_String.size());
-        NotificationAdapter adapter = new NotificationAdapter(list_String, getContext());
+        BabysisterAdapter adapter = new BabysisterAdapter(list_String, getContext(), false);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(linearLayoutManager);

@@ -22,7 +22,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/bb_name"
+            android:id="@+id/fv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -40,8 +40,8 @@
             android:layout_height="wrap_content"
             android:text="Bình luận:"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/bb_name"
-            app:layout_constraintTop_toBottomOf="@+id/bb_name" />
+            app:layout_constraintStart_toStartOf="@+id/fv_name"
+            app:layout_constraintTop_toBottomOf="@+id/fv_name" />
 
         <TextView
             android:id="@+id/rd_rate"
@@ -50,9 +50,9 @@
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:text="4.5/5"
-            app:layout_constraintBottom_toBottomOf="@+id/bb_name"
-            app:layout_constraintStart_toEndOf="@+id/bb_name"
-            app:layout_constraintTop_toTopOf="@+id/bb_name" />
+            app:layout_constraintBottom_toBottomOf="@+id/fv_name"
+            app:layout_constraintStart_toEndOf="@+id/fv_name"
+            app:layout_constraintTop_toTopOf="@+id/fv_name" />
 
         <TextView
             android:id="@+id/rd_comment"

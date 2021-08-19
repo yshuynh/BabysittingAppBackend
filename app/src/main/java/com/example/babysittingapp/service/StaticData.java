@@ -12,7 +12,9 @@ import com.example.babysittingapp.entity.Post;
 import com.example.babysittingapp.entity.User;
 import com.example.babysittingapp.ui.home.PostAdapter;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Observable;
 
 import retrofit2.Call;
@@ -21,11 +23,91 @@ import retrofit2.Response;
 
 public class StaticData extends Observable {
     public static StaticData instance = null;
-    public User loginToken = null;
+    private User loginToken = null;
     private ArrayList<Post> post_list;
     private String currentPostID = "";
     public User currentUser = null;
     private ArrayList<Notification> notification_list;
+
+    public User getLoginToken() {
+        return loginToken;
+    }
+
+    public void setLoginToken(User loginToken) {
+        this.loginToken = loginToken;
+        APIService service = APIUtils.getAPIService();
+        service.getFavoriteUsers(loginToken.getId()).enqueue(new Callback<ArrayList<User>>() {
+            @Override
+            public void onResponse(Call<ArrayList<User>> call, Response<ArrayList<User>> response) {
+                if (!response.isSuccessful()) {
+                    try {
+                        Log.d("abc", response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                StaticData.getInstance().setFavoriteUsers(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<User>> call, Throwable t) {
+                Log.d("abc", t.getMessage());
+            }
+        });
+    }
+
+    public ArrayList<User> getFavoriteUsers() {
+        return favoriteUsers;
+    }
+
+    public void setFavoriteUsers(ArrayList<User> favoriteUsers) {
+        this.favoriteUsers = favoriteUsers;
+    }
+
+    public boolean isFavorite(User user) {
+        for (User c_user : favoriteUsers) {
+            if (c_user.getId().equals(user.getId())) return true;
+        }
+        return false;
+    }
+
+    public void addFavoriteUsers(User user) {
+        APIService service = APIUtils.getAPIService();
+        service.addFavoriteUsers(loginToken.getId(), user.getId()).enqueue(new Callback<ArrayList<User>>() {
+            @Override
+            public void onResponse(Call<ArrayList<User>> call, Response<ArrayList<User>> response) {
+                if (!response.isSuccessful()) {
+                    Log.d("abc", "add favorite fail");
+                }
+                StaticData.getInstance().setFavoriteUsers(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<User>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void removeFavoriteUser(User user) {
+        APIService service = APIUtils.getAPIService();
+        service.removeFavoriteUsers(loginToken.getId(), user.getId()).enqueue(new Callback<ArrayList<User>>() {
+            @Override
+            public void onResponse(Call<ArrayList<User>> call, Response<ArrayList<User>> response) {
+                if (!response.isSuccessful()) {
+                    Log.d("abc", "remoive favorite fail");
+                }
+                StaticData.getInstance().setFavoriteUsers(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<User>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private ArrayList<User> favoriteUsers;
 
     public ArrayList<Post> getPost_list() {
         return post_list;

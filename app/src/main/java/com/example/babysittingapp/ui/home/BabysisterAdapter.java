@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,10 +40,12 @@ public class BabysisterAdapter extends RecyclerView.Adapter<BabysisterAdapter.Vi
     private ArrayList<User> babyList;
     // Lưu Context để dễ dàng truy cập
     private Context mContext;
+    private boolean isSetButton;
 
-    public BabysisterAdapter(ArrayList<User> _student, Context mContext) {
+    public BabysisterAdapter(ArrayList<User> _student, Context mContext, boolean _isSetButton) {
         this.babyList = _student;
         this.mContext = mContext;
+        this.isSetButton = _isSetButton;
     }
 
     @NonNull
@@ -94,20 +97,24 @@ public class BabysisterAdapter extends RecyclerView.Adapter<BabysisterAdapter.Vi
         TextView rating;
         ImageView avatar;
         Button button;
+        ToggleButton toggleButton;
 
         public ViewHolder(View itemView) {
             super(itemView);
             itemview = itemView;
-            name = itemview.findViewById(R.id.bb_name);
+            name = itemview.findViewById(R.id.fv_name);
             age = itemview.findViewById(R.id.bb_age);
             gender = itemview.findViewById(R.id.bb_gender);
             job = itemview.findViewById(R.id.bb_job);
             rating = itemview.findViewById(R.id.rd_rate);
-            avatar = itemview.findViewById(R.id.ud_avatar);
+            avatar = itemview.findViewById(R.id.fv_avatar);
             button = itemView.findViewById(R.id.bb_button);
-            if (!StaticData.getInstance().loginToken.getRole().equals("parent")) {
+            toggleButton = itemView.findViewById(R.id.bb_favoriteButton);
+            if (!StaticData.getInstance().getLoginToken().getRole().equals("parent")) {
                 button.setVisibility(View.GONE);
             }
+            if (!isSetButton)
+                button.setVisibility(View.INVISIBLE);
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -139,10 +146,7 @@ public class BabysisterAdapter extends RecyclerView.Adapter<BabysisterAdapter.Vi
                 public void onClick(View v) {
                     StaticData.getInstance().currentUser = babyList.get(getAdapterPosition());
                     UserInfoFragment nextFrag= new UserInfoFragment();
-                    ((ParentActivity)mContext).getSupportFragmentManager().beginTransaction()
-                            .add(R.id.fragment_holder, nextFrag, "userInfo")
-                            .addToBackStack(null)
-                            .commit();
+                    ((ParentActivity)mContext).startFragmentTag(nextFrag, "userInfo");
                 }
             });
         }

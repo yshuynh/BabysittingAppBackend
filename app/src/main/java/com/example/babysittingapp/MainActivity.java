@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.isSuccessful()) {
                     User loginToken = response.body();
-                    StaticData.getInstance().loginToken = loginToken;
+                    StaticData.getInstance().setLoginToken(loginToken);
                     Intent myIntent = new Intent(MainActivity.this, ParentActivity.class);
                     myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(myIntent);

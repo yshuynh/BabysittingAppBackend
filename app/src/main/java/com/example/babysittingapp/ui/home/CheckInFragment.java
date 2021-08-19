@@ -148,7 +148,7 @@ public class CheckInFragment extends Fragment implements Observer {
                         EditText commentText = mView.findViewById(R.id.rb_comment);
                         APIService service = APIUtils.getAPIService();
                         rate_user_id = post.getBabysister().getId();
-                        if (rate_user_id.equals(StaticData.getInstance().loginToken.getId()))
+                        if (rate_user_id.equals(StaticData.getInstance().getLoginToken().getId()))
                             rate_user_id = post.getParent().getId();
                         service.getRateUser(rate_user_id, post.getId()).enqueue(new Callback<RatingDetail>() {
                             @Override
@@ -234,7 +234,7 @@ public class CheckInFragment extends Fragment implements Observer {
                 break;
             }
         }
-        if (StaticData.getInstance().loginToken.getRole().equals("babysister")) {
+        if (StaticData.getInstance().getLoginToken().getRole().equals("babysister")) {
             setUpButtonCheckinBaby(btnCheckin);
             setUpButtonCheckinBaby(btnCheckout);
         }

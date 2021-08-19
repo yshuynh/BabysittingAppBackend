@@ -15,6 +15,7 @@ import com.example.babysittingapp.ParentActivity;
 import com.example.babysittingapp.R;
 import com.example.babysittingapp.entity.Post;
 import com.example.babysittingapp.service.CustomUtils;
+import com.example.babysittingapp.service.StaticData;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -95,7 +96,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             textPrice = itemView.findViewById(R.id.text_price);
             textStartTime = itemView.findViewById(R.id.textStartTime);
             textEndTime = itemView.findViewById(R.id.textEndTime);
-            avatar = itemView.findViewById(R.id.ud_avatar);
+            avatar = itemView.findViewById(R.id.fv_avatar);
             cntRequest = itemView.findViewById(R.id.pd_cntRequest);
 //            parentID = itemView.findViewById(R.id.pd_parentName);
             parentName = itemView.findViewById(R.id.pd_parentName);
@@ -104,8 +105,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                 @Override
                 public void onClick(View view) {
                     Log.d("abc", textStatus.getText().toString());
-//                    StaticData.getInstance().setCurrentPostID(postId);
-                    ((ParentActivity)mContext).startPostDetailFragment(postList.get(getAdapterPosition()).getId());
+                    StaticData.getInstance().setCurrentPostID(postList.get(getAdapterPosition()).getId());
+                    PostDetailFragment nextFrag= new PostDetailFragment();
+                    ((ParentActivity)mContext).startFragmentTag(nextFrag, "postDetail");
 //                    PostDetailFragment nextFrag= new PostDetailFragment();
 //                    ((ParentActivity)mContext).getSupportFragmentManager().beginTransaction()
 //                            .add(R.id.fragment_holder, nextFrag, "post_detail")

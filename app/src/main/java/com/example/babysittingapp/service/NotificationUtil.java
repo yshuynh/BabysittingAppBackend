@@ -31,7 +31,7 @@ public class NotificationUtil {
             @Override
             public void run() {
                 APIService service = APIUtils.getAPIService();
-                service.getNotificationListUser(StaticData.getInstance().loginToken.getId()).enqueue(new Callback<ArrayList<Notification>>() {
+                service.getNotificationListUser(StaticData.getInstance().getLoginToken().getId()).enqueue(new Callback<ArrayList<Notification>>() {
                     @Override
                     public void onResponse(Call<ArrayList<Notification>> call, Response<ArrayList<Notification>> response) {
                         if (!response.isSuccessful()) {

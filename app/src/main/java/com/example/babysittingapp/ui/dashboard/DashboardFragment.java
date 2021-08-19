@@ -25,7 +25,7 @@ public class DashboardFragment extends Fragment {
 
         binding = ParentFragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        StaticData.getInstance().currentUser = StaticData.getInstance().loginToken;
+        StaticData.getInstance().currentUser = StaticData.getInstance().getLoginToken();
         UserInfoFragment nextFrag= new UserInfoFragment();
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_holder_dashboard, nextFrag, "userInfo")

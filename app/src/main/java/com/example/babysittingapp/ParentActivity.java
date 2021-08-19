@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.example.babysittingapp.service.StaticData;
 import com.example.babysittingapp.ui.home.HomeFragment;
 import com.example.babysittingapp.ui.home.PostDetailFragment;
+import com.example.babysittingapp.ui.notifications.NotificationRealFragment;
 import com.example.babysittingapp.ui.notifications.NotificationsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -24,9 +25,12 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.babysittingapp.databinding.ActivityParentBinding;
 
+import java.util.Stack;
+
 public class ParentActivity extends AppCompatActivity {
 
     private ActivityParentBinding binding;
+    private Stack<String> lastFragmentTag = new Stack<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,21 +64,21 @@ public class ParentActivity extends AppCompatActivity {
         binding.navView.setSelectedItemId(R.id.navigation_notifications);
     }
 
-    public void goToPostDetail(String postId) {
-        switchToHome();
-        startPostDetailFragment(postId);
-    }
+//    public void goToPostDetail(String postId) {
+//        switchToHome();
+//        startPostDetailFragment(postId);
+//    }
 
-    public void startPostDetailFragment(String postId) {
-        deleteFragmentTag("post_detail");
-        Log.i("abc", String.valueOf(getSupportFragmentManager().getBackStackEntryCount()));
-        StaticData.getInstance().setCurrentPostID(postId);
-        PostDetailFragment nextFrag= new PostDetailFragment();
-        this.getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragment_holder, nextFrag, "post_detail")
-                .addToBackStack(null)
-                .commit();
-    }
+//    public void startPostDetailFragment(String postId) {
+//        deleteFragmentTag("post_detail");
+//        Log.i("abc", String.valueOf(getSupportFragmentManager().getBackStackEntryCount()));
+//        StaticData.getInstance().setCurrentPostID(postId);
+//        PostDetailFragment nextFrag= new PostDetailFragment();
+//        this.getSupportFragmentManager().beginTransaction()
+//                .add(R.id.fragment_holder, nextFrag, "post_detail")
+//                .addToBackStack(null)
+//                .commit();
+//    }
 
     public void deleteAllFragment() {
         FragmentManager fm = getSupportFragmentManager();
@@ -97,12 +101,17 @@ public class ParentActivity extends AppCompatActivity {
     }
 
     private void noti() {
-        deleteNoti();
-        NotificationsFragment nextFrag= new NotificationsFragment();
+        NotificationRealFragment nextFrag= new NotificationRealFragment();
+        startFragmentTag(nextFrag, "notification");
+    }
+
+    public void startFragmentTag(Fragment fragment, String tag) {
+        deleteFragmentTag(tag);
         this.getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragment_holder, nextFrag, "notification")
-                .addToBackStack(null)
+                .add(R.id.fragment_holder, fragment, tag)
+                .addToBackStack(tag)
                 .commit();
+        lastFragmentTag.push(tag);
     }
 
     public void deleteFragmentTag(String tag) {
@@ -135,24 +144,15 @@ public class ParentActivity extends AppCompatActivity {
         }
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        FragmentManager fm = getSupportFragmentManager();
-//        Log.d("abc", String.valueOf(fm.getBackStackEntryCount()));
-//        for(int entry = 0; entry<fm.getBackStackEntryCount(); entry++){
-//            Log.i("abc", "Found fragment: ");
-//            if (fm.getBackStackEntryAt(entry) instanceof PostDetailFragment){
-//                Log.d("debug", "you are in PostDetailFragment");
-//            } else if (fm.getBackStackEntryAt(entry) instanceof HomeFragment) {
-//                Log.d("debug", "you are in HomeFragment");
-//            }
-//        }
-//        if (fm.getBackStackEntryCount() > 0) {
-//            Log.d("ParentActivity", "popping backstack");
-//            fm.popBackStack();
-//        } else {
-//            Log.d("ParentActivity", "nothing on backstack, calling super");
-////            super.onBackPressed();
-//        }
-//    }
+    @Override
+    public void onBackPressed() {
+        Log.d("abc","on back pressed");
+        if (!lastFragmentTag.empty()) {
+            Fragment fragment = getSupportFragmentManager().findFragmentByTag(lastFragmentTag.peek());
+            lastFragmentTag.pop();
+            if (fragment != null)
+                getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+            return;
+        }
+    }
 }

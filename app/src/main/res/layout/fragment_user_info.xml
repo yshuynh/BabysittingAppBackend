@@ -24,8 +24,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp"
                 android:background="@color/white"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp">
@@ -42,7 +42,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
-                        android:id="@+id/ud_avatar"
+                        android:id="@+id/fv_avatar"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:background="@drawable/img"
@@ -247,16 +247,16 @@
                     app:layout_constraintTop_toBottomOf="@+id/cardView5" />
 
                 <ToggleButton
-                    android:id="@+id/favoriteButton"
+                    android:id="@+id/bb_favoriteButton"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
                     android:background="@drawable/favorite_button"
-                    android:textOn=""
-                    android:textOff=""
                     android:text=""
+                    android:textOff=""
+                    android:textOn=""
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 

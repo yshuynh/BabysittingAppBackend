@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.babysittingapp.ParentActivity;
 import com.example.babysittingapp.R;
 import com.example.babysittingapp.databinding.ParentFragmentHomeBinding;
 import com.example.babysittingapp.entity.LoginToken;
@@ -64,10 +65,7 @@ public class HomeFragment extends Fragment implements java.util.Observer {
             @Override
             public void onClick(View view) {
                 CreateParentFragment nextFrag= new CreateParentFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .add(R.id.fragment_holder, nextFrag, "findThisFragment")
-                        .addToBackStack(null)
-                        .commit();
+                ((ParentActivity)getActivity()).startFragmentTag(nextFrag, "addPost");
             }
         });
     }

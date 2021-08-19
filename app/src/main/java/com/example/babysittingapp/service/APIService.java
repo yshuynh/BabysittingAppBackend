@@ -73,4 +73,15 @@ public interface APIService {
 
     @GET("notification/{user_id}")
     Call<ArrayList<Notification>> getNotificationListUser(@Path("user_id") String user_id);
+
+    @Multipart
+    @POST("user/{user_id}/favorite")
+    Call<ArrayList<User>> addFavoriteUsers(@Path("user_id") String user_id, @Part("to_user_id") String to_user_id);
+
+    @Multipart
+    @PUT("user/{user_id}/favorite")
+    Call<ArrayList<User>> removeFavoriteUsers(@Path("user_id") String user_id, @Part("to_user_id") String to_user_id);
+
+    @GET("user/{user_id}/favorite")
+    Call<ArrayList<User>> getFavoriteUsers(@Path("user_id") String user_id);
 }

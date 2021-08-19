@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.babysittingapp.ParentActivity;
 import com.example.babysittingapp.R;
 import com.example.babysittingapp.entity.Post;
 import com.example.babysittingapp.entity.User;
@@ -58,7 +59,7 @@ public class PostDetailFragment extends Fragment implements Observer {
 
     private void editButtonAction(View rootView) {
         Button action = rootView.findViewById(R.id.pd_buttonAction);
-        User token = StaticData.getInstance().loginToken;
+        User token = StaticData.getInstance().getLoginToken();
         Post post = StaticData.getInstance().getCurrentPost();
         if (token.getRole().equals("parent")) {
             action.setText("Bắt đầu giữ trẻ");
@@ -66,10 +67,7 @@ public class PostDetailFragment extends Fragment implements Observer {
                 @Override
                 public void onClick(View v) {
                     CheckInFragment nextFrag= new CheckInFragment();
-                    getActivity().getSupportFragmentManager().beginTransaction()
-                            .add(R.id.fragment_holder, nextFrag, "check_in")
-                            .addToBackStack(null)
-                            .commit();
+                    ((ParentActivity)getActivity()).startFragmentTag(nextFrag, "checkIn");
                 }
             });
             if (post.getBabysister() == null) {
@@ -84,10 +82,7 @@ public class PostDetailFragment extends Fragment implements Observer {
                     @Override
                     public void onClick(View v) {
                         CheckInFragment nextFrag= new CheckInFragment();
-                        getActivity().getSupportFragmentManager().beginTransaction()
-                                .add(R.id.fragment_holder, nextFrag, "check_in")
-                                .addToBackStack(null)
-                                .commit();
+                        ((ParentActivity)getActivity()).startFragmentTag(nextFrag, "checkIn");
                     }
                 });
             }
@@ -135,20 +130,17 @@ public class PostDetailFragment extends Fragment implements Observer {
             public void onClick(View v) {
                 StaticData.getInstance().currentUser = parentData;
                 UserInfoFragment nextFrag= new UserInfoFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .add(R.id.fragment_holder, nextFrag, "userInfo")
-                        .addToBackStack(null)
-                        .commit();
+                ((ParentActivity)getActivity()).startFragmentTag(nextFrag, "userInfo");
             }
         });
 
         parentView.setVisibility(View.VISIBLE);
-        TextView name = parentView.findViewById(R.id.bb_name);
+        TextView name = parentView.findViewById(R.id.fv_name);
         TextView age = parentView.findViewById(R.id.bb_age);
         TextView gender = parentView.findViewById(R.id.bb_gender);
         TextView job = parentView.findViewById(R.id.bb_job);
         TextView rating = parentView.findViewById(R.id.rd_rate);
-        ImageView avatar = parentView.findViewById(R.id.ud_avatar);
+        ImageView avatar = parentView.findViewById(R.id.fv_avatar);
         name.setText(parentData.getName());
         Integer year = Calendar.getInstance().get(Calendar.YEAR);
         Integer birthYear = Integer.parseInt(parentData.getDateOfBird().split("-")[0]);
@@ -175,10 +167,7 @@ public class PostDetailFragment extends Fragment implements Observer {
             public void onClick(View v) {
                 StaticData.getInstance().currentUser = babyData;
                 UserInfoFragment nextFrag= new UserInfoFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .add(R.id.fragment_holder, nextFrag, "userInfo")
-                        .addToBackStack(null)
-                        .commit();
+                ((ParentActivity)getActivity()).startFragmentTag(nextFrag, "userInfo");
             }
         });
         if (babyData == null || babyData.getId().equals("US_bbnull")) {
@@ -186,12 +175,12 @@ public class PostDetailFragment extends Fragment implements Observer {
         }
         else {
             babyItemAccepted.setVisibility(View.VISIBLE);
-            TextView name = babyItemAccepted.findViewById(R.id.bb_name);
+            TextView name = babyItemAccepted.findViewById(R.id.fv_name);
             TextView age = babyItemAccepted.findViewById(R.id.bb_age);
             TextView gender = babyItemAccepted.findViewById(R.id.bb_gender);
             TextView job = babyItemAccepted.findViewById(R.id.bb_job);
             TextView rating = babyItemAccepted.findViewById(R.id.rd_rate);
-            ImageView avatar = babyItemAccepted.findViewById(R.id.ud_avatar);
+            ImageView avatar = babyItemAccepted.findViewById(R.id.fv_avatar);
             name.setText(babyData.getName());
             Integer year = Calendar.getInstance().get(Calendar.YEAR);
             Integer birthYear = Integer.parseInt(babyData.getDateOfBird().split("-")[0]);
@@ -236,7 +225,7 @@ public class PostDetailFragment extends Fragment implements Observer {
     private void createRecycleView(View rootView) {
         RecyclerView recyclerView = rootView.findViewById(R.id.pd_recycleView);
         ArrayList<User> listBabysister = (ArrayList<User>) StaticData.getInstance().getCurrentPost().getBabysisterRequest();
-        BabysisterAdapter adapter = new BabysisterAdapter(listBabysister, getContext());
+        BabysisterAdapter adapter = new BabysisterAdapter(listBabysister, getContext(), true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(linearLayoutManager);
