@@ -51,6 +51,29 @@ public class LoginToken {
     @Expose
     private Boolean gender;
 
+    @SerializedName("cmnd_truoc")
+    @Expose
+    private String cmnd_truoc;
+    @SerializedName("cmnd_sau")
+    @Expose
+    private String cmnd_sau;
+
+    public String getCmnd_truoc() {
+        return cmnd_truoc;
+    }
+
+    public void setCmnd_truoc(String cmnd_truoc) {
+        this.cmnd_truoc = cmnd_truoc;
+    }
+
+    public String getCmnd_sau() {
+        return cmnd_sau;
+    }
+
+    public void setCmnd_sau(String cmnd_sau) {
+        this.cmnd_sau = cmnd_sau;
+    }
+
     public String getId() {
         return id;
     }

@@ -162,8 +162,8 @@ public class CreateParentFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 PostCreatePost post = new PostCreatePost();
-                EditText price = rootView.findViewById(R.id.fc_price);
-                post.setPrice(Integer.parseInt(price.getText().toString()));
+//                EditText price = rootView.findViewById(R.id.fc_price);
+//                post.setPrice(Integer.parseInt(price.getText().toString()));
                 EditText age = rootView.findViewById(R.id.fc_textAge);
                 post.setAgeAvg(Integer.parseInt(age.getText().toString()));
                 EditText startDate = rootView.findViewById(R.id.fc_textTimeStart);

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -74,6 +75,7 @@ public class BabysisterAdapter extends RecyclerView.Adapter<BabysisterAdapter.Vi
         holder.gender.setText(babyData.getGender()?"Nam":"Nữ");
         holder.job.setText(babyData.getJob());
         holder.rating.setText(babyData.getRating().getAvg().toString());
+        holder.toggleButton.setChecked(StaticData.getInstance().isFavorite(babyData));
 
         holder.avatar.setImageBitmap(null);
         new CustomUtils.DownloadImageTask(holder.avatar)
@@ -147,6 +149,16 @@ public class BabysisterAdapter extends RecyclerView.Adapter<BabysisterAdapter.Vi
                     StaticData.getInstance().currentUser = babyList.get(getAdapterPosition());
                     UserInfoFragment nextFrag= new UserInfoFragment();
                     ((ParentActivity)mContext).startFragmentTag(nextFrag, "userInfo");
+                }
+            });
+            toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        StaticData.getInstance().addFavoriteUsers(babyList.get(getAdapterPosition()));
+                    } else {
+                        // The toggle is disabled
+                        StaticData.getInstance().removeFavoriteUser(babyList.get(getAdapterPosition()));
+                    }
                 }
             });
         }

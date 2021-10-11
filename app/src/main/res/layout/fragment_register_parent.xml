@@ -26,80 +26,88 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Họ tên:"
-                    app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
-                    app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName" />
+                    app:layout_constraintBottom_toTopOf="@+id/re_name"
+                    app:layout_constraintStart_toStartOf="@+id/re_name" />
 
                 <TextView
                     android:id="@+id/textView29"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Ngày sinh:"
-                    app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName2"
-                    app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName2" />
+                    app:layout_constraintBottom_toTopOf="@+id/re_dob"
+                    app:layout_constraintStart_toStartOf="@+id/re_dob" />
 
                 <TextView
                     android:id="@+id/textView30"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Giới tính:"
-                    app:layout_constraintBottom_toTopOf="@+id/radioGroup"
-                    app:layout_constraintStart_toStartOf="@+id/radioGroup" />
+                    app:layout_constraintBottom_toTopOf="@+id/re_gender"
+                    app:layout_constraintStart_toStartOf="@+id/re_gender" />
 
                 <TextView
                     android:id="@+id/textView31"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Nghề nghiệp:"
-                    app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName3"
-                    app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName3" />
+                    app:layout_constraintBottom_toTopOf="@+id/re_job"
+                    app:layout_constraintStart_toStartOf="@+id/re_job" />
+
+                <TextView
+                    android:id="@+id/textView43"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email:"
+                    app:layout_constraintBottom_toTopOf="@+id/re_email"
+                    app:layout_constraintStart_toStartOf="@+id/re_email" />
 
                 <TextView
                     android:id="@+id/textView34"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Số điện thoại:"
-                    app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
-                    app:layout_constraintStart_toStartOf="@+id/editTextPhone" />
+                    app:layout_constraintBottom_toTopOf="@+id/re_phone"
+                    app:layout_constraintStart_toStartOf="@+id/re_phone" />
 
                 <TextView
                     android:id="@+id/textView35"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Ảnh cá nhân:"
-                    app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName5"
-                    app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName5" />
+                    app:layout_constraintBottom_toTopOf="@+id/re_avatar"
+                    app:layout_constraintStart_toStartOf="@+id/re_avatar" />
 
                 <TextView
                     android:id="@+id/textView36"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Mặt trước CMND:"
-                    app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName6"
-                    app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName6" />
+                    app:layout_constraintBottom_toTopOf="@+id/re_cmnd_truoc"
+                    app:layout_constraintStart_toStartOf="@+id/re_cmnd_truoc" />
 
                 <TextView
                     android:id="@+id/textView37"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Mặt sau CMND:"
-                    app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName7"
-                    app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName7" />
+                    app:layout_constraintBottom_toTopOf="@+id/re_cmnd_sau"
+                    app:layout_constraintStart_toStartOf="@+id/re_cmnd_sau" />
 
                 <TextView
                     android:id="@+id/textView41"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tên đăng nhập"
-                    app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName8"
-                    app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName8" />
+                    app:layout_constraintBottom_toTopOf="@+id/re_username"
+                    app:layout_constraintStart_toStartOf="@+id/re_username" />
 
                 <TextView
                     android:id="@+id/textView42"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Mật khẩu"
-                    app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName9"
-                    app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName9" />
+                    app:layout_constraintBottom_toTopOf="@+id/re_password"
+                    app:layout_constraintStart_toStartOf="@+id/re_password" />
 
                 <TextView
                     android:id="@+id/textView38"
@@ -114,7 +122,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName8" />
+                    app:layout_constraintTop_toBottomOf="@+id/re_username" />
 
                 <TextView
                     android:id="@+id/textView39"
@@ -133,7 +141,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
-                    android:id="@+id/button5"
+                    android:id="@+id/re_submit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="158dp"
@@ -149,7 +157,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView38" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName"
+                    android:id="@+id/re_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -162,7 +170,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView39" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName2"
+                    android:id="@+id/re_dob"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -172,18 +180,18 @@
                     android:hint="Ngày sinh"
                     android:inputType="textPersonName"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+                    app:layout_constraintTop_toBottomOf="@+id/re_name" />
 
                 <RadioGroup
-                    android:id="@+id/radioGroup"
+                    android:id="@+id/re_gender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    app:layout_constraintStart_toStartOf="@+id/editTextPhone"
-                    app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName">
+                    app:layout_constraintStart_toStartOf="@+id/re_phone"
+                    app:layout_constraintTop_toTopOf="@+id/re_name">
 
                     <RadioButton
-                        android:id="@+id/radioButton"
+                        android:id="@+id/radioButton_nam"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Nam" />
@@ -196,18 +204,18 @@
                 </RadioGroup>
 
                 <EditText
-                    android:id="@+id/editTextPhone"
+                    android:id="@+id/re_phone"
                     android:layout_width="133dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Số điện thoại"
                     android:inputType="phone"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName2"
-                    app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName2" />
+                    app:layout_constraintStart_toEndOf="@+id/re_dob"
+                    app:layout_constraintTop_toTopOf="@+id/re_dob" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName3"
+                    android:id="@+id/re_job"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -220,10 +228,26 @@
                     android:inputType="textPersonName"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+                    app:layout_constraintTop_toBottomOf="@+id/re_email" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName4"
+                    android:id="@+id/re_email"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:ems="10"
+                    android:hint="Email"
+                    android:inputType="textPersonName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/re_dob" />
+
+                <EditText
+                    android:id="@+id/re_address"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -236,10 +260,10 @@
                     android:inputType="textPersonName"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+                    app:layout_constraintTop_toBottomOf="@+id/re_job" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName5"
+                    android:id="@+id/re_avatar"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -252,10 +276,10 @@
                     android:inputType="textPersonName"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
+                    app:layout_constraintTop_toBottomOf="@+id/re_address" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName6"
+                    android:id="@+id/re_cmnd_truoc"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -268,10 +292,10 @@
                     android:inputType="textPersonName"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
+                    app:layout_constraintTop_toBottomOf="@+id/re_avatar" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName7"
+                    android:id="@+id/re_cmnd_sau"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -284,10 +308,10 @@
                     android:inputType="textPersonName"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName6" />
+                    app:layout_constraintTop_toBottomOf="@+id/re_cmnd_truoc" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName8"
+                    android:id="@+id/re_username"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -300,10 +324,10 @@
                     android:inputType="textPersonName"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName7" />
+                    app:layout_constraintTop_toBottomOf="@+id/re_cmnd_sau" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName9"
+                    android:id="@+id/re_password"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -316,15 +340,15 @@
                     android:inputType="textPersonName"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName8" />
+                    app:layout_constraintTop_toBottomOf="@+id/re_username" />
 
                 <TextView
                     android:id="@+id/textView40"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Địa chỉ"
-                    app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName4"
-                    app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName4" />
+                    app:layout_constraintBottom_toTopOf="@+id/re_address"
+                    app:layout_constraintStart_toStartOf="@+id/re_address" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>

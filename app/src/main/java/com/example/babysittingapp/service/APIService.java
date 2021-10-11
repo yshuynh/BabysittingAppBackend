@@ -84,4 +84,7 @@ public interface APIService {
 
     @GET("user/{user_id}/favorite")
     Call<ArrayList<User>> getFavoriteUsers(@Path("user_id") String user_id);
+
+    @POST("user/register")
+    Call<User> userRegister(@Body User user);
 }
